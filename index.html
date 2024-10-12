@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="SIKETIMUNMAS - Sistem Informasi Ketentraman, Ketertiban Umum, dan Perlindungan Masyarakat">
+    <meta name="keywords" content="ketentraman, ketertiban umum, perlindungan masyarakat, ntt, satuan linmas, satuan damkar, peta rawan kebakaran, non kebakaran">
+    <meta name="author" content="Bidang Perlindungan Masyarakat Provinsi NTT">
+    <title>SI-KETIMUNMAS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            color: #333333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header {
+	    background: #333333;
+	    color: #fff;
+	    padding: 50px 100px; /* Kurangi padding agar tidak terlalu besar */
+	    display: flex;
+	    justify-content: space-between;
+	    align-items: flex-start; /* Atur ke atas */
+	    flex-wrap: wrap;
+	}
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-left img.logo {
+            width: 50px;
+            height: auto;
+        }
+
+        .header-left h1, .header-left h2 {
+            margin: 0;
+            font-family: 'Merriweather', serif;
+        }
+
+        .header-left h1 {
+            font-size: 20px;
+        }
+
+        .header-left h2 {
+            font-size: 14px;
+        }
+
+        /* Sidebar transparan dan transisi halus */
+        .sidebar {
+	    width: 200px;
+	    background-color: rgba(135, 206, 235, 0.7); /* Transparansi yang lebih halus */
+	    color: white;
+	    padding: 40px;
+	    position: fixed;
+	    top: 0;
+	    left: -280px;
+	    height: 100%;
+	    transition: left 0.4s ease, background-color 0.3s ease;
+	    z-index: 1000;
+	}
+
+        /* Sidebar terbuka */
+        .sidebar.open {
+            left: 0;
+        }
+
+        .menu {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .menu > li {
+            margin-bottom: 20px;
+        }
+
+        .menu a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            transition: color 0.2s ease;
+        }
+
+        .menu a:hover {
+            color: #7e7e7e;
+        }
+
+        /* Transisi sub-menu yang lebih halus */
+        .sub-menu {
+            list-style: none;
+            padding-left: 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .menu > li:hover .sub-menu {
+            max-height: 200px;
+        }
+
+        /* Tombol menu tetap di luar sidebar */
+        .menu-button {
+	    position: absolute;
+	    top: 20px; /* Jarak yang lebih baik dari atas */
+	    left: 20px; /* Jarak yang lebih baik dari kiri */
+	    cursor: pointer;
+	    z-index: 1500;
+	    display: flex;
+	    flex-direction: column;
+	    gap: 5px;
+	    background: none;
+	    border: none;
+	    outline: none;
+	}
+
+	.menu-button .bar {
+	    width: 35px;
+	    height: 5px;
+	    background-color: white;
+	    border-radius: 5px; /* Bikin lebih smooth */
+	    transition: 0.4s;
+	}
+
+	/* Transisi tombol menu */
+	.menu-button.open .bar1 {
+	    transform: rotate(-45deg) translate(-5px, 5px);
+	}
+
+	.menu-button.open .bar2 {
+	    opacity: 0;
+	}
+
+	.menu-button.open .bar3 {
+	    transform: rotate(45deg) translate(-5px, -5px);
+	}
+
+	/* Menambahkan petunjuk ikon menu */
+	.menu-button:hover .bar {
+	    background-color: #ffcc00; /* Menonjolkan warna ketika hover */
+	}
+
+        .newsletter {
+            background-color: #7e7e7e;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .newsletter input[type="email"] {
+            padding: 10px;
+            width: 80%;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .newsletter button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #333333;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .newsletter button:hover {
+            background: #4f4f4f;
+        }
+
+        footer {
+            background: #333333;
+            color: #fff;
+            text-align: center;
+            padding: 5px 0;
+        }
+
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #7e7e7e;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .menu-button {
+                margin-top: 20px;
+            }
+
+            .main-content {
+                padding: 10px;
+            }
+
+            .content {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .header-left h1 {
+                font-size: 4vw;
+            }
+
+            .header-left h2 {
+                font-size: 3.5vw;
+            }
+
+            .main-content p {
+                font-size: 3vw;
+            }
+
+            .newsletter input[type="email"] {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <img src="images/logo_polpp.jpg" alt="logo_polpp" class="logo" width="100" height="auto">
+	    <img src="images/logo_linmas.png" alt="logo_linmas" class="logo" width="100" height="auto">
+            <div>
+                <h1>SIKETIMUNMAS</h1>
+                <h2>Sistem Informasi Ketentraman, Ketertiban Umum dan Perlindungan Masyarakat</h2>
+            </div>
+        </div>
+        <!-- Tombol Menu di luar sidebar -->
+        <button class="menu-button">
+            <div class="bar bar1"></div>
+            <div class="bar bar2"></div>
+            <div class="bar bar3"></div>
+        </button>
+    </header>
+
+    <!-- Sidebar Menu -->
+    <div class="sidebar">
+        <ul class="menu">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="#">Publikasi</a>
+                <ul class="sub-menu">
+                    <li><a href="peraturan.html">Peraturan</a></li>
+                    <li><a href="artikel.html">Artikel</a></li>
+                    <li><a href="berita.html">Berita</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Layanan</a>
+                <ul class="sub-menu">
+                    <li><a href="rekapitulasi.html">Rekapitulasi</a></li>
+                    <li><a href="statistik.html">Statistik SatLinmas</a></li>
+                    <li><a href="survei.html">Survei Kepuasan</a></li>
+                </ul>
+            </li>
+            <li><a href="profil.html">Profil</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div class="main-content">
+            <h2>Selamat Datang di Bidang Pelindungan Masyarakat - Satuan Polisi Pamong Praja Provinsi NTT</h2>
+            <p>Dalam rangka peningkatan kualitas pelayanan kepada masyarakat dewasa ini terhadap perkembangan informasi dan teknologi Digital dalam bidang layanan internet, dan media sosial, maka sebagai organisasi pemerintah dan aparatur pemerintahan dituntut untuk lebih profesional dalam memberikan pelayanan dengan mengadopsi perkembangan akan nilai-nilai yang berkembang di masyarakat, oleh karena itu perlu dilakukan perubahan pola pikir dan tindak yang diimplementasikan melalui inovasi dalam peningkatan pelayanan masyarakat akan informasi sehingga semua informasi Pemerintahan dapat diakses secara transparan dengan cepat melalui akses informasi/website Si-KetimunMas.</p>
+            <p>Melalui inovasi Si-KetimunMas, diharapkan dapat meningkatkan sistem informasi yang dapat diakses oleh publik pada umumnya sehingga ada timbal balik terhadap informasi tentang penanganan gangguan ketertiban umum, ketentraman masyarakat serta perlindungan masyarakat.</p>
+        </div>
+    </div>
+
+        <div class="newsletter">
+	    <h3>Pemerintah Provinsi Nusa Tenggara Timur</h3>
+	    <p>Bidang Perlindungan Masyarakat Satuan Polisi Pamong Praja Provinsi NTT</p>
+	    <input type="email" placeholder="Masukkan email Anda untuk menerima informasi">
+	    <button>Kirim</button>
+	</div>
+
+    <footer>
+        <p>&copy; 2024 SIKETIMUNMAS. All rights reserved. | <a href="#">Kontak</a> | <a href="#">Privacy Policy</a></p>
+        <p>Ikuti kami di: 
+            <a href="#">Facebook</a> | 
+            <a href="#">Twitter</a> | 
+            <a href="#">Instagram</a>
+        </p>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuButton = document.querySelector('.menu-button');
+        const sidebar = document.querySelector('.sidebar');
+        const submitButton = document.querySelector('.newsletter button');
+        const emailInput = document.querySelector('.newsletter input[type="email"]');
+
+        menuButton.addEventListener('click', function() {
+            sidebar.classList.toggle('open');
+            menuButton.classList.toggle('open');
+        });
+
+        submitButton.addEventListener('click', function() {
+            if (emailInput.value) {
+                alert('Terima kasih! Informasi akan dikirim ke email Anda.');
+                // Fungsi pengiriman email ke server atau API
+            } else {
+                alert('Mohon masukkan email yang valid.');
+            }
+        });
+    });
+</script>
+</body>
+</html>
