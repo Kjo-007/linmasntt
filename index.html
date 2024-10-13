@@ -57,13 +57,13 @@
 
         .sidebar {
 	    width: 140px;
-	    background-color: rgba(0, 0, 50, 0.85);
+	    background-color: rgba(0, 0, 40, 0.70);
 	    color: white;
-	    padding: 30px;
+	    padding: 35px;
 	    position: fixed;
 	    top: 0;
 	    left: -280px;
-	    height: 95%;
+	    height: 100%;
 	    transition: left 0.4s ease, background-color 0.3s ease;
 	    z-index: 1000;
 	    display: flex;
@@ -75,7 +75,7 @@
 	    text-align: center;
 	    font-size: 11px !important;
  	    color: white;
-	    padding-bottom: 10px;
+	    padding-bottom: 30px;
 	}
 
         .sidebar.open {
@@ -224,12 +224,14 @@
         footer a:hover {
             color: #7e7e7e;
         }
+	    
 	.main-content {
-	    max-width: 1000px; /* Batasi lebar konten pada mode desktop */
-	    margin: 0 auto;   /* Tempatkan konten di tengah halaman */
-	    padding: 20px;    /* Berikan padding agar konten tidak menempel di tepi */
-	    text-align: justify; /* Pastikan teks rata kiri-kanan */
+	    max-width: 1400px;
+	    margin: 0 auto;
+	    padding: 20px;
+	    text-align: justify;
 	}
+	    
 	.content .main-content p {
 	    text-align: justify !important;
 	}
@@ -290,7 +292,6 @@
         </button>
     </header>
 
-    <!-- Sidebar Menu -->
     <div class="sidebar">
         <ul class="menu">
             <li><a href="index.html">Beranda</a></li>
@@ -322,8 +323,8 @@
     </div>
 
         <div class="newsletter">
-	    <h3>Pemerintah Provinsi Nusa Tenggara Timur</h3>
-	    <p>Bidang Perlindungan Masyarakat Satuan Polisi Pamong Praja Provinsi NTT</p>
+	    <h3>Satuan Polisi Pamong Praja Provinsi NTT</h3>
+	    <p>Bidang Perlindungan Masyarakat</p>
 	    <input type="email" placeholder="Masukkan email Anda untuk menerima informasi">
 	    <button>Kirim</button>
 	</div>
@@ -352,7 +353,6 @@
         submitButton.addEventListener('click', function() {
             if (emailInput.value) {
                 alert('Terima kasih! Informasi akan dikirim ke email Anda.');
-                // Fungsi pengiriman email ke server atau API
             } else {
                 alert('Mohon masukkan email yang valid.');
             }
