@@ -13,7 +13,7 @@
             font-family: 'Roboto', sans-serif;
             background-color: #e0e0e0;
             margin: 0;
-            padding: 0;
+            padding: 1px;
             color: #333333;
             display: flex;
             flex-direction: column;
@@ -57,7 +57,7 @@
 
         .sidebar {
 	    width: 140px;
-	    background-color: #4682b4;
+	    background-color: rgba(0, 0, 50, 0.85);
 	    color: white;
 	    padding: 40px;
 	    position: fixed;
@@ -75,7 +75,7 @@
         .menu {
             list-style: none;
             padding: 0;
-            margin: 20px 0;
+            margin: 30px 0;
         }
 
         .menu > li {
@@ -96,14 +96,14 @@
 
         .sub-menu {
             list-style: none;
-            padding-left: 20px;
+            padding-left: 10px;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease-out;
         }
 
         .menu > li:hover .sub-menu {
-            max-height: 200px;
+            max-height: 100px;
         }
 
         .menu-button {
@@ -190,7 +190,11 @@
         footer a:hover {
             color: #7e7e7e;
         }
-
+	    
+	.content .main-content p {
+	    text-align: justify !important;
+	}
+	    
         @media (max-width: 768px) {
             header {
                 justify-content: center;
@@ -220,7 +224,7 @@
             }
 
             .main-content p {
-                font-size: 5vw;
+                font-size: 3vw;
 		text-align: justify;
             }
 
@@ -272,13 +276,13 @@
         <div class="main-content">
             <h2>Selamat Datang di Bidang Pelindungan Masyarakat - Satuan Polisi Pamong Praja Provinsi NTT</h2>
             <p>Dalam rangka peningkatan kualitas pelayanan kepada masyarakat dewasa ini terhadap perkembangan informasi dan teknologi Digital dalam bidang layanan internet, dan media sosial, maka sebagai organisasi pemerintah dan aparatur pemerintahan dituntut untuk lebih profesional dalam memberikan pelayanan dengan mengadopsi perkembangan akan nilai-nilai yang berkembang di masyarakat, oleh karena itu perlu dilakukan perubahan pola pikir dan tindak yang diimplementasikan melalui inovasi dalam peningkatan pelayanan masyarakat akan informasi sehingga semua informasi Pemerintahan dapat diakses secara transparan dengan cepat melalui akses informasi/website Si-KetimunMas.</p>
-            <p>Melalui inovasi Si-KetimunMas, diharapkan dapat meningkatkan sistem informasi yang dapat diakses oleh publik pada umumnya sehingga ada timbal balik terhadap informasi tentang penanganan gangguan ketertiban umum, ketentraman masyarakat serta perlindungan masyarakat.</p>
+            <p>Melalui inovasi SIKETIMUNMAS, diharapkan dapat meningkatkan sistem informasi yang dapat diakses oleh publik pada umumnya sehingga ada timbal balik terhadap informasi tentang penanganan gangguan ketertiban umum, ketentraman masyarakat serta perlindungan masyarakat.</p>
         </div>
     </div>
 
         <div class="newsletter">
-	    <h3>Pemerintah Provinsi Nusa Tenggara Timur</h3>
-	    <p>Bidang Perlindungan Masyarakat Satuan Polisi Pamong Praja Provinsi NTT</p>
+	    <h3>Polisi Pamong Praja Provinsi NTT</h3>
+	    <p>Bidang Perlindungan Masyarakat Satuan</p>
 	    <input type="email" placeholder="Masukkan email Anda untuk menerima informasi">
 	    <button>Kirim</button>
 	</div>
@@ -307,11 +311,29 @@
         submitButton.addEventListener('click', function() {
             if (emailInput.value) {
                 alert('Terima kasih! Informasi akan dikirim ke email Anda.');
-                // Fungsi pengiriman email ke server atau API
             } else {
                 alert('Mohon masukkan email yang valid.');
             }
         });
+	    
+	let touchStartX = 0;
+	let touchEndX = 0;
+
+	document.addEventListener('touchstart', function(event) {
+	    touchStartX = event.changedTouches[0].screenX;
+	}, false);
+
+	document.addEventListener('touchend', function(event) {
+	    touchEndX = event.changedTouches[0].screenX;
+	    handleGesture();
+	}, false); 
+
+	function handleGesture() {
+	    if (touchEndX < touchStartX - 50) {
+	        sidebar.classList.remove('open');
+ 	       menuButton.classList.remove('open');
+	    }
+	}
     });
 </script>
 </body>
