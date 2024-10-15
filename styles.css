@@ -44,6 +44,16 @@ header {
     color: #555;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+a:hover {
+    color: blue;
+}
+
 .read-more {
     display: inline-block;
     margin-top: 2px;
