@@ -2,12 +2,12 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="SIKETIMUNMAS - Sistem Informasi Ketentraman, Ketertiban Umum, dan Perlindungan Masyarakat">
     <meta name="keywords" content="ketentraman, ketertiban umum, perlindungan masyarakat, ntt, satuan linmas, satuan damkar, peta rawan kebakaran, non kebakaran">
     <meta name="author" content="Bidang Perlindungan Masyarakat Provinsi NTT">
     <title>SI-KETIMUNMAS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -287,10 +287,17 @@
             <img src="images/logo_polpp.png" alt="logo_polpp" class="logo" width="100" height="auto">
 	    <img src="images/logo_linmas.png" alt="logo_linmas" class="logo" width="100" height="auto">
             <div>
+	<div class="navbar">
                 <h1>SIKETIMUNMAS</h1>
                 <h2>Sistem Informasi Ketentraman, Ketertiban Umum dan Perlindungan Masyarakat</h2>
-            </div>
+            <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+            </nav>
         </div>
+		    
         <button class="menu-button" aria-label="Toggle Menu">MENU
 	    <div class="bar bar1"></div>
 	    <div class="bar bar2"></div>
@@ -322,10 +329,14 @@
     </div>
     <div class="content">
         <div class="main-content">
-            <h2>Selamat Datang di Bidang Pelindungan Masyarakat - Satuan Polisi Pamong Praja Provinsi NTT</h2>
+            <h2>Welcome to SIKETIMUNMAS</h2>
+	    <p>Your one-stop solution for community services.</p>
+            <button>Learn More</button>
             <p>Dalam rangka peningkatan kualitas pelayanan kepada masyarakat dewasa ini terhadap perkembangan informasi dan teknologi Digital dalam bidang layanan internet, dan media sosial, maka sebagai organisasi pemerintah dan aparatur pemerintahan dituntut untuk lebih profesional dalam memberikan pelayanan dengan mengadopsi perkembangan akan nilai-nilai yang berkembang di masyarakat, oleh karena itu perlu dilakukan perubahan pola pikir dan tindak yang diimplementasikan melalui inovasi dalam peningkatan pelayanan masyarakat akan informasi sehingga semua informasi Pemerintahan dapat diakses secara transparan dengan cepat melalui akses informasi/website SIKETIMUNMAS.</p>
-            <p>Melalui inovasi SIKETIMUNMAS, diharapkan dapat meningkatkan sistem informasi yang dapat diakses oleh publik pada umumnya sehingga ada timbal balik terhadap informasi tentang penanganan gangguan ketertiban umum, ketentraman masyarakat serta perlindungan masyarakat.</p>
+            <p>Melalui inovasi Sistem Informasi Ketentraman, Ketertiban Umum dan Perlindungan Masyharakat (SIKETIMUNMAS), diharapkan dapat meningkatkan sistem informasi yang dapat diakses oleh publik pada umumnya sehingga ada timbal balik terhadap informasi tentang penanganan gangguan ketertiban umum, ketentraman masyarakat serta perlindungan masyarakat.</p>
         </div>
+	<div><img src="https://via.placeholder.com/400" alt="Placeholder Image">
+	</div>
     </div>
 
         <div class="newsletter">
@@ -345,6 +356,7 @@
     </footer>
 
     <script>
+    <script src="script.js"></script>
     document.addEventListener('DOMContentLoaded', function() {
         const menuButton = document.querySelector('.menu-button');
         const sidebar = document.querySelector('.sidebar');
